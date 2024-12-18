@@ -14,7 +14,6 @@ const iconMap: { [key: string]: React.ElementType } = {
     DollarSign, SquarePen, Home, Package, Handshake, Percent, Landmark, FileText, BarChart3, Settings, HardHat
 };
 
-export default function Sidebar({ children }: { children: React.ReactNode }) {
 const Sidebar = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [expandedItems, setExpandedItems] = useState<string[]>([])
@@ -143,10 +142,19 @@ const Sidebar = () => {
         {/* Page Content */}
         <main className="flex-1 overflow-y-auto p-6 bg-gray-100">
           {/* Add your page content here */}
-          {children}
+          <div className="space-y-4">
+            {[...Array(20)].map((_, i) => (
+              <div key={i} className="bg-white p-4 rounded-lg shadow">
+                <h2 className="text-lg font-semibold">Content Section {i + 1}</h2>
+                <p>This is some sample content to demonstrate scrolling.</p>
+              </div>
+            ))}
+          </div>
         </main>
       </div>
     </div>
   )
 }
-}
+
+export default Sidebar;
+
